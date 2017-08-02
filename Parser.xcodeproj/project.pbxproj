@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		445D29D21F30EA30000DAC2F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 445D29D11F30EA30000DAC2F /* main.cpp */; settings = {COMPILER_FLAGS = "-I/usr/local/opt/curl/include -I/usr/local/Cellar/nlohmann_json/2.1.1/include "; }; };
+		4425E31D1F323A38000CDB66 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4425E31C1F323A38000CDB66 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +23,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4425E31C1F323A38000CDB66 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = "<group>"; };
 		445D29CE1F30EA30000DAC2F /* Parser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Parser; sourceTree = BUILT_PRODUCTS_DIR; };
-		445D29D11F30EA30000DAC2F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		445D29D91F30EA30000DAC2F /* htmlcxx */ = {isa = PBXFileReference; lastKnownFileType = folder; name = htmlcxx; path = Parser/htmlcxx; sourceTree = "<group>"; };
 		445D29DB1F30EA30000DAC2F /* html */ = {isa = PBXFileReference; lastKnownFileType = folder; name = html; path = Parser/htmlcxx/html; sourceTree = "<group>"; };
 		44F064951F30F2E0002BFC63 /* json.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = json.hpp; path = "../json-develop/src/json.hpp"; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		445D29D01F30EA30000DAC2F /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				445D29D11F30EA30000DAC2F /* main.cpp */,
+				4425E31C1F323A38000CDB66 /* main.cpp */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -134,7 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				445D29D21F30EA30000DAC2F /* main.cpp in Sources */,
+				4425E31D1F323A38000CDB66 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
