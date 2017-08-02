@@ -13,16 +13,14 @@
 using json = nlohmann::json;
 
 std::string data; //will hold the url's contents
-int count = 0;
-bool m = false;
 
 size_t writeCallback(char* buf, size_t size, size_t nmemb, void* up)
-{ //callback must have this declaration
+{
+    //callback must have this declaration
     //buf is a pointer to the data that curl has for us
     //size*nmemb is the size of the buffer
     
-    for (int c = 0; c<size*nmemb; c++)
-    {
+    for (int c = 0; c<size*nmemb; c++) {
         data.push_back(buf[c]);
     }
     return size*nmemb; //tell curl how many bytes we handled
@@ -31,11 +29,8 @@ size_t writeCallback(char* buf, size_t size, size_t nmemb, void* up)
 int main()
 {
     std::string s;
-    //char *s;
     std::cout << "Type company name:" << std::endl;
     std::cin >> s;
-    
-    
     s = "http://api.github.com/users/" + s + "/repos";
     std::cout << s << std::endl;
     
@@ -57,55 +52,18 @@ int main()
     curl_easy_cleanup(curl);
     curl_global_cleanup();
     
+    int count = 0;
     json j = json::parse(data);
+    for (int i = 0; i < j.size(); i++) {
+        auto it = j[i].find("stargazers_count");
+        if (it != j[i].end()) {
+            std::cout << *it << std::endl;
+            count += int(*it);
+        }
+    }
     
     
-    //int count = 0;
     std::cout << std::endl;
-    json::parser_callback_t cb = [](int depth, json::parse_event_t event, json & parsed)
-    {
-        // skip object elements with key "Thumbnail"
-        if (event == json::parse_event_t::key and parsed == json("stargazers_count"))
-        {
-            //count ;
-            //s = parsed();
-            m = true;
-            return false;
-        }
-        else
-        {
-            if (m == true) {
-                m = false;
-                int neww = std::stoi(parsed.dump());
-                std::cout << neww << std::endl;
-                count += neww;
-            }
-            return true;
-        }
-    };
-    
-    // parse (with callback) and serialize JSON
-    json j_filtered = json::parse(data, cb);
-    //std::cout << s << std::endl;
     std::cout << std::endl << count << std::endl;
-    //std::cout << std::setw(4) << j_filtered << '\n';
-    //int foo_present = j.count("stargazers_count");
-    
-    //std::cout << j << std::endl;
-    /*
-    for (json::iterator it = j.begin(); it != j.end(); ++it) {
-        std::cout << *it << '\n' << '\n';
-    }*/
-    
-    //std::cout << foo_present << std::endl;
-    
     return 0;
 }
-
-/*int main(int argc, const char * argv[]) {
-    std::cout << "Hello, ssss!\n";
-    std::string s = "{ \"happy\": true, \"pi\": 3.141 }";
-    json j = json::parse(s);
- 
-    return 0;
-}*/
