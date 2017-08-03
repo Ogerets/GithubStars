@@ -29,7 +29,7 @@
 		445D29D91F30EA30000DAC2F /* htmlcxx */ = {isa = PBXFileReference; lastKnownFileType = folder; name = htmlcxx; path = Parser/htmlcxx; sourceTree = "<group>"; };
 		445D29DB1F30EA30000DAC2F /* html */ = {isa = PBXFileReference; lastKnownFileType = folder; name = html; path = Parser/htmlcxx/html; sourceTree = "<group>"; };
 		446DDE191F33D52500E57D38 /* Search.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Search.cpp; path = src/Search.cpp; sourceTree = "<group>"; };
-		446DDE1A1F33D52500E57D38 /* Search.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Search.hpp; path = src/Search.hpp; sourceTree = "<group>"; };
+		446DDE1C1F33D9DF00E57D38 /* Search.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Search.hpp; path = include/Search.hpp; sourceTree = "<group>"; };
 		44F064951F30F2E0002BFC63 /* json.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = json.hpp; path = "../json-develop/src/json.hpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +64,7 @@
 		445D29D01F30EA30000DAC2F /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				446DDE1D1F33D9E400E57D38 /* include */,
 				449C4C471F3369DA003B8443 /* src */,
 			);
 			path = Parser;
@@ -79,12 +80,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		446DDE1D1F33D9E400E57D38 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				446DDE1C1F33D9DF00E57D38 /* Search.hpp */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
 		449C4C471F3369DA003B8443 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				4425E31C1F323A38000CDB66 /* main.cpp */,
 				446DDE191F33D52500E57D38 /* Search.cpp */,
-				446DDE1A1F33D52500E57D38 /* Search.hpp */,
+				4425E31C1F323A38000CDB66 /* main.cpp */,
 			);
 			name = src;
 			sourceTree = "<group>";
