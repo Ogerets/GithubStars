@@ -4,7 +4,8 @@ project(parser)
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-file(GLOB SOURCES "src/*.*pp")
+file(GLOB SOURCES "src/*.cpp")
+include_directories("include")
 
 add_executable(parser ${SOURCES})
 

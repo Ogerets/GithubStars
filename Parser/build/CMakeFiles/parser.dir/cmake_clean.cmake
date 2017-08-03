@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/parser.dir/src/Search.cpp.o"
   "CMakeFiles/parser.dir/src/main.cpp.o"
   "parser.pdb"
   "parser"

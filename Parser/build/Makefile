@@ -123,6 +123,33 @@ parser/fast:
 	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/build
 .PHONY : parser/fast
 
+src/Search.o: src/Search.cpp.o
+
+.PHONY : src/Search.o
+
+# target to build an object file
+src/Search.cpp.o:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/src/Search.cpp.o
+.PHONY : src/Search.cpp.o
+
+src/Search.i: src/Search.cpp.i
+
+.PHONY : src/Search.i
+
+# target to preprocess a source file
+src/Search.cpp.i:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/src/Search.cpp.i
+.PHONY : src/Search.cpp.i
+
+src/Search.s: src/Search.cpp.s
+
+.PHONY : src/Search.s
+
+# target to generate assembly for a file
+src/Search.cpp.s:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/src/Search.cpp.s
+.PHONY : src/Search.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -159,6 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... parser"
+	@echo "... src/Search.o"
+	@echo "... src/Search.i"
+	@echo "... src/Search.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

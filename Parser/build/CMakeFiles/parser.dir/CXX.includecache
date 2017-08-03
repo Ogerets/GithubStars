@@ -86,7 +86,11 @@ sys/socket.h
 
 ../dep/curl/include/curl/typecheck-gcc.h
 
-/Users/eugene/Desktop/GithubStars/Parser/src/json.hpp
+../include/Search.hpp
+iostream
+-
+
+../include/json.hpp
 algorithm
 -
 array
@@ -140,7 +144,9 @@ utility
 vector
 -
 
-/Users/eugene/Desktop/GithubStars/Parser/src/main.cpp
+/Users/eugene/Desktop/GithubStars/Parser/src/Search.cpp
+Search.hpp
+/Users/eugene/Desktop/GithubStars/Parser/src/Search.hpp
 iostream
 -
 json.hpp
@@ -151,4 +157,10 @@ future
 -
 vector
 -
+
+/Users/eugene/Desktop/GithubStars/Parser/src/main.cpp
+iostream
+-
+Search.hpp
+/Users/eugene/Desktop/GithubStars/Parser/src/Search.hpp
 

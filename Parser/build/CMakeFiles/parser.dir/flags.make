@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/eugene/Desktop/GithubStars/Parser/dep/curl/include 
+CXX_INCLUDES = -I/Users/eugene/Desktop/GithubStars/Parser/include -I/Users/eugene/Desktop/GithubStars/Parser/dep/curl/include 
 

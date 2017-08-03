@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4425E31D1F323A38000CDB66 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4425E31C1F323A38000CDB66 /* main.cpp */; };
+		446DDE1B1F33D52500E57D38 /* Search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 446DDE191F33D52500E57D38 /* Search.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +28,8 @@
 		445D29CE1F30EA30000DAC2F /* Parser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Parser; sourceTree = BUILT_PRODUCTS_DIR; };
 		445D29D91F30EA30000DAC2F /* htmlcxx */ = {isa = PBXFileReference; lastKnownFileType = folder; name = htmlcxx; path = Parser/htmlcxx; sourceTree = "<group>"; };
 		445D29DB1F30EA30000DAC2F /* html */ = {isa = PBXFileReference; lastKnownFileType = folder; name = html; path = Parser/htmlcxx/html; sourceTree = "<group>"; };
+		446DDE191F33D52500E57D38 /* Search.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Search.cpp; path = src/Search.cpp; sourceTree = "<group>"; };
+		446DDE1A1F33D52500E57D38 /* Search.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Search.hpp; path = src/Search.hpp; sourceTree = "<group>"; };
 		44F064951F30F2E0002BFC63 /* json.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = json.hpp; path = "../json-develop/src/json.hpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				4425E31C1F323A38000CDB66 /* main.cpp */,
+				446DDE191F33D52500E57D38 /* Search.cpp */,
+				446DDE1A1F33D52500E57D38 /* Search.hpp */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4425E31D1F323A38000CDB66 /* main.cpp in Sources */,
+				446DDE1B1F33D52500E57D38 /* Search.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
