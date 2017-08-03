@@ -9,16 +9,16 @@
 #include <iostream>
 #include "json.hpp"
 #include <curl/curl.h>
-#include <thread>
+#include <future>
+#include <vector>
 
 using json = nlohmann::json;
-
 
 class Search {
 private:
     std::string company;
     std::string data;
-    int starCount = 0;
+    std::atomic<int> starCount;
     
     static size_t writeCallback(char* buf, size_t size, size_t nmemb, void* up) {
         static_cast<Search*>(up)->data.append(buf, size*nmemb);
@@ -51,7 +51,34 @@ private:
     
     void countStars() {
         json j = json::parse(data);
-        for (int i = 0; i < j.size(); i++) {
+       
+        int num_cpus = std::thread::hardware_concurrency();
+        int part = int(j.size())/num_cpus;
+        int rem = j.size() % num_cpus;
+        if (part > 0) {
+            std::shared_future<bool> future;
+            std::vector<std::future<bool>> futures(num_cpus);
+            for (int i = 0; i < num_cpus; i++) {
+                future = (std::async(std::launch::async, [](int beg, json j, int end, std::atomic_int &starCount) {
+                    for (int i = beg; i < end; i++) {
+                        auto it = j[i].find("stargazers_count");
+                        if (it != j[i].end()) {
+                            std::cout << *it << std::endl;
+                            starCount += int(*it);
+                        }
+                    }
+                    return true;
+                }, i*part, j, (i+1)*part, ref(starCount)));
+            }
+            future.wait();
+        }
+        /*
+        auto m = j.find("message");
+        if ((m != j.end()) && (*m == "Not Found"))
+            std::cout << "company not found!" << std::endl;
+        */
+    
+        for (int i = part*num_cpus; i < num_cpus*part + rem; i++) {
             auto it = j[i].find("stargazers_count");
             if (it != j[i].end()) {
                 std::cout << *it << std::endl;
@@ -63,6 +90,7 @@ private:
 public:
     Search(std::string company) {
         this->company = company;
+        starCount = 0;
     }
     
     void start() {
@@ -77,11 +105,11 @@ public:
 int main()
 {
     std::string s;
-    //std::cout << "Type company name:" << std::endl;
-    //std::cin >> s;
-    s = "fastlane";
-    Search *s1 = new Search(s);
-    s1->start();
+    std::cout << "Type company name:" << std::endl;
+    std::cin >> s;
+    //s = "fastlane";
+    Search s1(s);
+    s1.start();
     
     return 0;
 }
