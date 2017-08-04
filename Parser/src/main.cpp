@@ -17,7 +17,10 @@ int main()
     //company = "fastlane";
     
     Search s1(company);
-    s1.start();
+    s1.startSearch();
+    
+    if (s1.isOkay())
+        std::cout << std::endl << s1.getCompany() + "'s total number of stars: " << s1.getResult() << std::endl;
     
     return 0;
 }

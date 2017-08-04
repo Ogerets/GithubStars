@@ -16,7 +16,7 @@ private:
     std::string company;
     std::string data;
     std::atomic<int> starCount;
-    bool isOkay = true;
+    bool okay = true;
     
     static size_t writeCallback(char* buf, size_t size, size_t nmemb, void* up);    //curl writedata func
     
@@ -27,7 +27,10 @@ private:
 public:
     Search(std::string company);
     
-    void start();
+    void startSearch();
+    bool isOkay();
+    std::string getCompany();
+    int getResult();
 };
 
 

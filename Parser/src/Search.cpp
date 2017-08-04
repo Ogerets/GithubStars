@@ -15,15 +15,17 @@
 
 using json = nlohmann::json;
 
-//curl writedata func
-size_t Search::writeCallback(char* buf, size_t size, size_t nmemb, void* up) {
-    static_cast<Search*>(up)->data.append(buf, size*nmemb);
-    return size*nmemb;                          //tell curl how many bytes we handled
+Search::Search(std::string company) {
+    this->company = company;
+    this->starCount = 0;
 }
 
-void Search::PrintError(std::string error) {
-    std::cout << "ERROR: " << error << std::endl;
-    isOkay = false;
+void Search::startSearch() {
+    getReposFromGithub();
+    if (data != "")
+        countStars();
+    else
+        PrintError("data is missing");
 }
 
 //curl making request
@@ -94,18 +96,26 @@ void Search::countStars() {
     }
 }
 
-Search::Search(std::string company) {
-    this->company = company;
-    this->starCount = 0;
+//curl writedata func
+size_t Search::writeCallback(char* buf, size_t size, size_t nmemb, void* up) {
+    static_cast<Search*>(up)->data.append(buf, size*nmemb);
+    return size*nmemb;                          //tell curl how many bytes we handled
 }
 
-void Search::start() {
-    getReposFromGithub();
-    if (data != "")
-        countStars();
-    else
-        PrintError("data is missing");
-    
-    if (isOkay)
-        std::cout << std::endl << company + "'s total number of stars: " << starCount << std::endl;
+void Search::PrintError(std::string error) {
+    std::cout << "ERROR: " << error << std::endl;
+    okay = false;
 }
+
+bool Search::isOkay() {
+    return okay;
+}
+
+std::string Search::getCompany() {
+    return company;
+}
+
+int Search::getResult() {
+    return starCount;
+}
+
