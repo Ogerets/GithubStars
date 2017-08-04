@@ -9,7 +9,7 @@
 #include "Search.hpp"
 #include <iostream>
 #include "json.hpp"
-#include <curl/curl.h>
+#include "CurlWrapper.hpp"
 #include <future>
 #include <vector>
 
@@ -21,44 +21,22 @@ Search::Search(std::string company) {
 }
 
 void Search::startSearch() {
-    getReposFromGithub();
-    if (data != "")
-        countStars();
+    std::string request;
+    request = "http://api.github.com/users/" + this->company + "/repos";
+    //std::cout << "request is: " << request << std::endl;
+    
+    CurlWrapper curl;
+    curl.takeDataFrom(request);
+    
+    if (curl.getData() != "")
+        countStars(curl.getData());
     else
         PrintError("data is missing");
 }
 
-//curl making request
-void Search::getReposFromGithub() {
-    std::string request;
-    request = "http://api.github.com/users/" + this->company + "/repos";
-    std::cout << "request is: " << request << std::endl;
-    
-    CURL *curl;
-    curl_global_init(CURL_GLOBAL_ALL);
-    curl = curl_easy_init();
-    
-    if (curl) {
-        curl_easy_setopt(curl, CURLOPT_USERAGENT, "Ogerets");
-        curl_easy_setopt(curl, CURLOPT_URL, request.c_str());
-        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION,1);
-        curl_easy_setopt(curl, CURLOPT_WRITEDATA, this);
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, &Search::writeCallback);
-        curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);    //tell curl to output its progress
-        
-        curl_easy_perform(curl);
-    }
-    else
-        PrintError("curl init falied");
-    
-    //std::cout << std::endl << data << std::endl;
-    
-    curl_easy_cleanup(curl);
-    curl_global_cleanup();
-}
-
 //json parsing
-void Search::countStars() {
+void Search::countStars(std::string data) {
+    
     json j = json::parse(data);
     
     auto m = j.find("message");
@@ -94,12 +72,6 @@ void Search::countStars() {
             this->starCount += int(*it);
         }
     }
-}
-
-//curl writedata func
-size_t Search::writeCallback(char* buf, size_t size, size_t nmemb, void* up) {
-    static_cast<Search*>(up)->data.append(buf, size*nmemb);
-    return size*nmemb;                          //tell curl how many bytes we handled
 }
 
 void Search::PrintError(std::string error) {

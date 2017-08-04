@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4425E31D1F323A38000CDB66 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4425E31C1F323A38000CDB66 /* main.cpp */; };
 		446DDE1B1F33D52500E57D38 /* Search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 446DDE191F33D52500E57D38 /* Search.cpp */; };
+		44874E591F34658A00E7C0BB /* CurlWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44874E571F34658A00E7C0BB /* CurlWrapper.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +31,8 @@
 		445D29DB1F30EA30000DAC2F /* html */ = {isa = PBXFileReference; lastKnownFileType = folder; name = html; path = Parser/htmlcxx/html; sourceTree = "<group>"; };
 		446DDE191F33D52500E57D38 /* Search.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Search.cpp; path = src/Search.cpp; sourceTree = "<group>"; };
 		446DDE1C1F33D9DF00E57D38 /* Search.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Search.hpp; path = include/Search.hpp; sourceTree = "<group>"; };
+		44874E571F34658A00E7C0BB /* CurlWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CurlWrapper.cpp; path = src/CurlWrapper.cpp; sourceTree = "<group>"; };
+		44874E5A1F34676A00E7C0BB /* CurlWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CurlWrapper.hpp; path = include/CurlWrapper.hpp; sourceTree = "<group>"; };
 		44F064951F30F2E0002BFC63 /* json.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = json.hpp; path = "../json-develop/src/json.hpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				446DDE1C1F33D9DF00E57D38 /* Search.hpp */,
+				44874E5A1F34676A00E7C0BB /* CurlWrapper.hpp */,
 			);
 			name = include;
 			sourceTree = "<group>";
@@ -92,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				446DDE191F33D52500E57D38 /* Search.cpp */,
+				44874E571F34658A00E7C0BB /* CurlWrapper.cpp */,
 				4425E31C1F323A38000CDB66 /* main.cpp */,
 			);
 			name = src;
@@ -157,6 +162,7 @@
 			files = (
 				4425E31D1F323A38000CDB66 /* main.cpp in Sources */,
 				446DDE1B1F33D52500E57D38 /* Search.cpp in Sources */,
+				44874E591F34658A00E7C0BB /* CurlWrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
